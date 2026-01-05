@@ -35,10 +35,11 @@
       dockerfile: ConsultationService/Dockerfile
     container_name: consultation-api
     ports: [ "5002:8080" ]
-    depends_on: [ mysql-db ]
+    depends_on: [ mysql-db, patient-service ]
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=mysql-db;Database=health_db;User=root;Password=root;
+      - PatientServiceUrl=http://patient-service:8080
 
 
   prescription-service:

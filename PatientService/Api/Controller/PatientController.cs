@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PatientService.Application.Service;
-using PatientService.Domain.Ports;
 using PatientService.Application.Dto;
 
 namespace PatientService.Api.Controller;

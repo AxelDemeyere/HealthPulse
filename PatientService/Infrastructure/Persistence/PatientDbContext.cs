@@ -1,4 +1,4 @@
-﻿namespace PatientService.Infrastructure;
+﻿namespace PatientService.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using PatientService.Domain.Entity;
 

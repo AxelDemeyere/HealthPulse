@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PatientService.Application.Service;
 using PatientService.Domain.Ports;
-using PatientService.Infrastructure;
 using PatientService.Infrastructure.Persistence;
 
 
@@ -16,7 +15,10 @@ builder.Services.AddScoped<IPatientService, PatientService.Application.Service.P
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.CustomSchemaIds(type => type.FullName);
+});
 
 var app = builder.Build();
 
@@ -24,8 +26,8 @@ using (var scope = app.Services.CreateScope())
 {
     try
     {
-        var contect = scope.ServiceProvider.GetRequiredService<PatientDbContext>();
-        contect.Database.Migrate();
+        var context = scope.ServiceProvider.GetRequiredService<PatientDbContext>();
+        context.Database.Migrate();
         Console.WriteLine("Migrations Patient appliquées.");
     }
     catch (Exception ex)
