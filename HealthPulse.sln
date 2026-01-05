@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrescriptionService", "Pres
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard", "Dashboard\Dashboard.csproj", "{54459708-1758-433C-835E-6C439565F43E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{9D81538E-D63D-4597-AC62-1B2068344816}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,5 +37,9 @@ Global
 		{54459708-1758-433C-835E-6C439565F43E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54459708-1758-433C-835E-6C439565F43E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54459708-1758-433C-835E-6C439565F43E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D81538E-D63D-4597-AC62-1B2068344816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D81538E-D63D-4597-AC62-1B2068344816}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D81538E-D63D-4597-AC62-1B2068344816}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D81538E-D63D-4597-AC62-1B2068344816}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

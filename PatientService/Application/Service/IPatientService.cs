@@ -1,11 +1,9 @@
-﻿namespace PatientService.Application.Service;
+﻿using Common.Application.Service;
+using PatientService.Domain.Entity;
+
+namespace PatientService.Application.Service;
 using Dto;
 
-public interface IPatientService
+public interface IPatientService : IGenericService<Patient, PatientDtos.Receive>
 {
-    Task<IEnumerable<PatientDtos.Send>> GetAllPatientsAsync();
-    Task<PatientDtos.Send?> GetPatientByIdAsync(int id);
-    Task<PatientDtos.Send> CreatePatientAsync(PatientDtos.Receive dto);
-    Task<PatientDtos.Send> UpdatePatientAsync(int id, PatientDtos.Receive dto);
-    Task<bool> DeletePatientAsync(int id);
 }

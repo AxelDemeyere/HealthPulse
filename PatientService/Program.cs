@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PatientService.Application.Service;
 using PatientService.Domain.Ports;
 using PatientService.Infrastructure;
+using PatientService.Infrastructure.Persistence;
 
 
 var builder = WebApplication.CreateBuilder(args);
