@@ -1,0 +1,75 @@
+﻿services:
+
+  # ==========================================
+  # INFRASTRUCTURE (Base de données)
+  # ==========================================
+  mysql-db:
+    image: mysql:8.0
+    container_name: health_pulse-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+  
+  # ==========================================
+  # MICROSERVICES MÉTIERS
+  # ==========================================
+  patient-service:
+    image: patient-service
+    build:
+      context: .
+      dockerfile: PatientService/Dockerfile
+    container_name: patient-api
+    ports: ["5001:8080"]
+    depends_on: [mysql-db]
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=mysql-db;Database=health_db;User=root;Password=root;
+  
+  consultation-service:
+    image: consultation-service
+    build:
+      context: .
+      dockerfile: ConsultationService/Dockerfile
+    container_name: consultation-api
+    ports: [ "5002:8080" ]
+    depends_on: [ mysql-db ]
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=mysql-db;Database=health_db;User=root;Password=root;
+
+
+  prescription-service:
+    image: prescription-service
+    build:
+      context: .
+      dockerfile: PrescriptionService/Dockerfile
+    container_name: prescription-api
+    ports: [ "5003:8080" ]
+    depends_on: [ mysql-db ]
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=mysql-db;Database=health_db;User=root;Password=root;
+
+  # ==========================================
+  # SERVICE D'AGRÉGATION (DASHBOARD)
+  # ==========================================
+  dashboard:
+    image: dashboard
+    build:
+      context: .
+      dockerfile: Dashboard/Dockerfile
+    container_name: dashboard-api
+    ports: [ "5000:8080" ]
+    depends_on: [ patient-service, consultation-service, prescription-service ]
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ServiceUrls__Patient=http://patient-service:8080
+      - ServiceUrls__Consultation=http://consultation-service:8080
+      - ServiceUrls__Prescription=http://prescription-service:8080
+
+volumes:
+  db_data:
+

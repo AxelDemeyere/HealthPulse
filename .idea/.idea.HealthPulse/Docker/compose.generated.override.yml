@@ -1,0 +1,75 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  consultation-service:
+    build:
+      context: "C:\\Users\\a.demeyere\\Desktop\\Cours\\DotNet\\Exercices\\HealthPulse"
+      dockerfile: "ConsultationService/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/ConsultationService.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "consultation-service:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\a.demeyere\\Desktop\\Cours\\DotNet\\Exercices\\HealthPulse\\ConsultationService:/app:rw"
+    - "C:\\Users\\a.demeyere\\Desktop\\Cours\\DotNet\\Exercices\\HealthPulse:/src:rw"
+    - "C:\\Users\\a.demeyere\\.nuget\\packages:/root/.nuget/packages"
+    working_dir: "/app"
+  dashboard:
+    build:
+      context: "C:\\Users\\a.demeyere\\Desktop\\Cours\\DotNet\\Exercices\\HealthPulse"
+      dockerfile: "Dashboard/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/Dashboard.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "dashboard:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\a.demeyere\\Desktop\\Cours\\DotNet\\Exercices\\HealthPulse\\Dashboard:/app:rw"
+    - "C:\\Users\\a.demeyere\\Desktop\\Cours\\DotNet\\Exercices\\HealthPulse:/src:rw"
+    - "C:\\Users\\a.demeyere\\.nuget\\packages:/root/.nuget/packages"
+    working_dir: "/app"
+  patient-service:
+    build:
+      context: "C:\\Users\\a.demeyere\\Desktop\\Cours\\DotNet\\Exercices\\HealthPulse"
+      dockerfile: "PatientService/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/PatientService.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "patient-service:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\a.demeyere\\Desktop\\Cours\\DotNet\\Exercices\\HealthPulse\\PatientService:/app:rw"
+    - "C:\\Users\\a.demeyere\\Desktop\\Cours\\DotNet\\Exercices\\HealthPulse:/src:rw"
+    - "C:\\Users\\a.demeyere\\.nuget\\packages:/root/.nuget/packages"
+    working_dir: "/app"
+  prescription-service:
+    build:
+      context: "C:\\Users\\a.demeyere\\Desktop\\Cours\\DotNet\\Exercices\\HealthPulse"
+      dockerfile: "PrescriptionService/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/PrescriptionService.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "prescription-service:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\a.demeyere\\Desktop\\Cours\\DotNet\\Exercices\\HealthPulse\\PrescriptionService:/app:rw"
+    - "C:\\Users\\a.demeyere\\Desktop\\Cours\\DotNet\\Exercices\\HealthPulse:/src:rw"
+    - "C:\\Users\\a.demeyere\\.nuget\\packages:/root/.nuget/packages"
+    working_dir: "/app"
